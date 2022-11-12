@@ -1,0 +1,18 @@
+version: "3.3"
+
+services:
+
+  palis_web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: palis
+    container_name: palis
+    volumes:
+      - .:/code
+    command: ./docker_commands.sh
+    env_file:
+      - .env
+    restart: unless-stopped
+    ports:
+      - 8000:8000
