@@ -5,6 +5,7 @@ from user.models import User
 
 class Product(models.Model):
     """Таблица продукта"""
+    objects = None
     creator_user = models.ForeignKey(User, on_delete=models.PROTECT,
                                      verbose_name='creator')
     vendor_code = models.CharField(max_length=256, verbose_name='vendor_code')
