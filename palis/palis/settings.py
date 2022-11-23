@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     'user',
     'main',
+    'bot',
 ]
 
 MIDDLEWARE = [
@@ -163,3 +164,6 @@ CORS_ALLOWED_ORIGINS = env('CORS_ALLOWED_ORIGINS').split(' ')
 ADMIN_LOGIN = env('ADMIN_LOGIN')
 ADMIN_EMAIL = env('ADMIN_EMAIL')
 ADMIN_PASSWORD = env('ADMIN_PASSWORD')
+
+# Telegram BOT
+API_TOKEN=env('API_TOKEN')

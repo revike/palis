@@ -4,5 +4,5 @@ RUN #apt-get update && apt-get install -y postgresql-contrib && rm -rf /var/lib/
 RUN mkdir /code
 WORKDIR /code
 COPY requirements.txt /code/
-RUN pip install --no-cache-dir --upgrade pip && pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --upgrade pip && pip install -r requirements.txt
 COPY . /code/
