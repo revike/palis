@@ -1,11 +1,12 @@
 from django.contrib import admin
+from django.contrib.auth.models import Group
 
 from user.models import User, Profile
 
 
 class InlineProfile(admin.TabularInline):
     model = Profile
-    extra = 0
+    extra = 1
     max_num = 1
 
 
@@ -22,4 +23,5 @@ class UserAdmin(admin.ModelAdmin):
 
 
 admin.site.register(User, UserAdmin)
+admin.site.unregister(Group)
 admin.site.site_header = 'Админ-панель'
