@@ -6,8 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: palis
-    container_name: palis
+    image: palis_web
+    container_name: palis_web
     volumes:
       - .:/code
     command: ./docker_commands.sh
