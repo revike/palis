@@ -16,3 +16,12 @@ services:
     restart: unless-stopped
     ports:
       - 8000:8000
+
+  palis_bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: palis_bot
+    command: bash -c "cd palis && python3 manage.py start_bot && cd .."
+    depends_on:
+      - palis_web
