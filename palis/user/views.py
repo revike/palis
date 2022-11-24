@@ -1,3 +1,4 @@
+from django.contrib.auth.hashers import make_password
 from rest_framework import generics
 
 from user.models import User
@@ -13,7 +14,9 @@ class RegisterUserApiView(generics.CreateAPIView):
     def perform_create(self, serializer):
         user = serializer.save()
         user.is_active = False
+        user.password = make_password(serializer.data['password'])
         user.save()
+
 
 class UserApiView(generics.RetrieveUpdateDestroyAPIView):
     """Просмотр, редактирование и удаление пользователя"""
