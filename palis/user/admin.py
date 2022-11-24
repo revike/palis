@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 
-from user.models import User, Profile
+from user.models import User, Profile, Departament, Post
 
 
 class InlineProfile(admin.TabularInline):
@@ -18,10 +18,12 @@ class UserAdmin(admin.ModelAdmin):
         'id', 'telegram_id', 'username', 'email', 'first_name', 'last_name')
     fields = (
         'id', 'telegram_id', 'username', 'email', 'first_name', 'last_name',
-        'is_active', 'is_staff', 'is_superuser', 'date_joined',)
+        'is_active', 'is_staff', 'is_superuser', 'date_joined', 'password', )
     readonly_fields = ('id', 'telegram_id', 'username', 'date_joined',)
 
 
 admin.site.register(User, UserAdmin)
+admin.site.register(Departament)
+admin.site.register(Post)
 admin.site.unregister(Group)
 admin.site.site_header = 'Админ-панель'
