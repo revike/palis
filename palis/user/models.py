@@ -19,6 +19,32 @@ class User(AbstractUser):
         verbose_name_plural = "Пользователи"
 
 
+class Departament(models.Model):
+    """Таблица отдела"""
+    name = models.CharField(max_length=128, verbose_name='departament')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = "departament"
+        verbose_name = "Отдел"
+        verbose_name_plural = "Отделы"
+
+
+class Post(models.Model):
+    """Таблица должности"""
+    name = models.CharField(max_length=128, verbose_name='post')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = "post"
+        verbose_name = "Должность"
+        verbose_name_plural = "Должности"
+
+
 class Profile(models.Model):
     """Таблица профиля пользователя"""
     CHOICES = (
@@ -30,8 +56,10 @@ class Profile(models.Model):
     phone_number_regex = RegexValidator(regex=r"^\+?1?\d{8,15}$")
     phone = models.CharField(validators=[phone_number_regex], max_length=16,
                              unique=True, verbose_name='phone')
-    departament = models.CharField(max_length=128, verbose_name='departament')
-    post = models.CharField(max_length=128, verbose_name='post')
+    departament = models.ForeignKey(Departament, on_delete=models.PROTECT,
+                                    verbose_name='departament')
+    post = models.ForeignKey(Post, on_delete=models.PROTECT,
+                             verbose_name='post')
     salary = models.DecimalField(max_digits=8, decimal_places=2, default=0,
                                  validators=[
                                      MinValueValidator(Decimal('0.00'))],

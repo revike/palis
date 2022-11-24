@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
 
     'user',
     'main',
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -166,4 +168,5 @@ ADMIN_EMAIL = env('ADMIN_EMAIL')
 ADMIN_PASSWORD = env('ADMIN_PASSWORD')
 
 # Telegram BOT
-API_TOKEN=env('API_TOKEN')
+API_TOKEN = env('API_TOKEN')
+BACKEND_URL = env('BACKEND_URL')

@@ -1,6 +1,6 @@
 from django.core.management import BaseCommand
 
-from bot.views import bot
+from bot.auth_bot.views import bot
 
 
 class Command(BaseCommand):
